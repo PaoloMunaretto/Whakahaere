@@ -1,0 +1,271 @@
+-- --------------------------------------------------------
+-- Host:                         127.0.0.1
+-- Versione server:              10.5.4-MariaDB - mariadb.org binary distribution
+-- S.O. server:                  Win64
+-- HeidiSQL Versione:            11.0.0.5919
+-- --------------------------------------------------------
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET NAMES utf8 */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+
+
+-- Dump della struttura del database hoteldatabase
+CREATE DATABASE IF NOT EXISTS `hoteldatabase` /*!40100 DEFAULT CHARACTER SET latin1 */;
+USE `hoteldatabase`;
+
+-- Dump della struttura di tabella hoteldatabase.bedroom
+CREATE TABLE IF NOT EXISTS `bedroom` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Floor` tinyint(3) unsigned zerofill NOT NULL DEFAULT 000,
+  `Room` tinyint(3) unsigned zerofill NOT NULL DEFAULT 000,
+  `BedSingle` tinyint(2) unsigned NOT NULL DEFAULT 0,
+  `BedDouble` tinyint(2) unsigned NOT NULL DEFAULT 0,
+  `Bathroom` tinyint(1) unsigned NOT NULL,
+  `Cost` double(4,2) unsigned NOT NULL,
+  `Status` tinytext NOT NULL,
+  `Notes` longtext DEFAULT NULL,
+  `IDHotelRoom` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `IDHotelRoom` (`IDHotelRoom`),
+  CONSTRAINT `FK_bedroom_hotelinformation` FOREIGN KEY (`IDHotelRoom`) REFERENCES `hotelinformation` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='List of rooms available in this hotel';
+
+-- Dump dei dati della tabella hoteldatabase.bedroom: ~3 rows (circa)
+/*!40000 ALTER TABLE `bedroom` DISABLE KEYS */;
+INSERT INTO `bedroom` (`ID`, `Floor`, `Room`, `BedSingle`, `BedDouble`, `Bathroom`, `Cost`, `Status`, `Notes`, `IDHotelRoom`) VALUES
+	(1, 001, 014, 1, 1, 1, 60.00, 'AVAILABLE', NULL, 1),
+	(2, 001, 012, 0, 2, 1, 40.00, 'AVAILABLE', NULL, 1),
+	(3, 002, 025, 2, 2, 1, 80.00, 'RESTRUCTURATION', NULL, 2);
+/*!40000 ALTER TABLE `bedroom` ENABLE KEYS */;
+
+-- Dump della struttura di tabella hoteldatabase.client
+CREATE TABLE IF NOT EXISTS `client` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Name` char(100) NOT NULL,
+  `Surname` char(100) NOT NULL,
+  `FiscalCode` char(20) NOT NULL,
+  `DateBirth` date NOT NULL,
+  `TypeDocument` char(50) NOT NULL,
+  `CodeDocument` char(50) NOT NULL,
+  `Telephone` char(20) NOT NULL,
+  `Email` char(50) DEFAULT NULL,
+  `Street` char(100) NOT NULL,
+  `City` char(50) NOT NULL,
+  `Province` char(100) NOT NULL,
+  `CAP` smallint(5) unsigned NOT NULL,
+  `Country` char(50) NOT NULL,
+  `P_IVA` bigint(20) unsigned DEFAULT NULL,
+  `SDI` char(50) DEFAULT NULL,
+  `Company` char(100) DEFAULT NULL,
+  `CompanyStreet` char(100) DEFAULT NULL,
+  `CompanyCity` char(100) DEFAULT NULL,
+  `CompanyProvince` char(100) DEFAULT NULL,
+  `CompanyCAP` smallint(5) unsigned DEFAULT NULL,
+  `CompanyCountry` char(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='list of registered customers of Hotel';
+
+-- Dump dei dati della tabella hoteldatabase.client: ~2 rows (circa)
+/*!40000 ALTER TABLE `client` DISABLE KEYS */;
+INSERT INTO `client` (`ID`, `Name`, `Surname`, `FiscalCode`, `DateBirth`, `TypeDocument`, `CodeDocument`, `Telephone`, `Email`, `Street`, `City`, `Province`, `CAP`, `Country`, `P_IVA`, `SDI`, `Company`, `CompanyStreet`, `CompanyCity`, `CompanyProvince`, `CompanyCAP`, `CompanyCountry`) VALUES
+	(1, 'Paolo', 'Munaretto', 'MNRPLA89L75G720F', '1988-04-09', 'IDENTITY_CARD', 'AS 2714785', '+39 3479242585', 'p.munaretto.90@outlook.com', 'Via Delle Cronache', 'Padova', 'Este', 35042, 'ITALY', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+	(2, 'Emilio', 'Fede', 'FDEMLE80E10L781H', '1980-05-10', 'IDENTITY_CARD', 'AD 1578465', '+39 334 8578245', 'efede@rai1.com', 'Via La Marmora 15', 'Verona', 'Verona', 37100, 'ITALY', 1638090249, 'W7YVJK9', 'BIO GREEN Srl', 'Via Dante Alighieri 54', 'Padova', 'Abano Terme', 35031, 'ITALY');
+/*!40000 ALTER TABLE `client` ENABLE KEYS */;
+
+-- Dump della struttura di tabella hoteldatabase.countryhotel
+CREATE TABLE IF NOT EXISTS `countryhotel` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `HotelStars` tinyint(2) unsigned NOT NULL DEFAULT 0,
+  `City` char(50) NOT NULL DEFAULT '_',
+  `Province` char(20) DEFAULT '_',
+  `Country` char(20) NOT NULL DEFAULT '_',
+  `ClientTax` decimal(10,2) unsigned NOT NULL DEFAULT 0.00,
+  `IVA` tinyint(3) unsigned NOT NULL DEFAULT 0,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1 COMMENT='In this table, we have Star reference of Hotel, country and cost';
+
+-- Dump dei dati della tabella hoteldatabase.countryhotel: ~9 rows (circa)
+/*!40000 ALTER TABLE `countryhotel` DISABLE KEYS */;
+INSERT INTO `countryhotel` (`ID`, `HotelStars`, `City`, `Province`, `Country`, `ClientTax`, `IVA`) VALUES
+	(1, 2, 'Milano', 'Milano', 'ITALY', 2.00, 22),
+	(2, 3, 'Milano', 'Milano', 'ITALY', 3.00, 22),
+	(3, 4, 'Milano', 'Milano', 'ITALY', 4.00, 22),
+	(4, 5, 'Milano', 'Milano', 'ITALY', 5.00, 22),
+	(5, 1, 'Roma', 'Roma', 'ITALY', 3.00, 22),
+	(6, 2, 'Roma', 'Roma', 'ITALY', 3.00, 22),
+	(7, 3, 'Roma', 'Roma', 'ITALY', 4.00, 22),
+	(8, 4, 'Roma', 'Roma', 'ITALY', 6.00, 22),
+	(9, 5, 'Roma', 'Roma', 'ITALY', 7.00, 22);
+/*!40000 ALTER TABLE `countryhotel` ENABLE KEYS */;
+
+-- Dump della struttura di tabella hoteldatabase.employees
+CREATE TABLE IF NOT EXISTS `employees` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` char(50) NOT NULL DEFAULT '0',
+  `Surname` char(50) NOT NULL DEFAULT '0',
+  `User` char(20) NOT NULL DEFAULT '0',
+  `UserPassword` char(20) NOT NULL DEFAULT '0',
+  `TypeAccess` char(20) NOT NULL DEFAULT '0',
+  `IDHotelEmployees` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `IDHotelEmployees` (`IDHotelEmployees`),
+  CONSTRAINT `FK1_IDHotelReference` FOREIGN KEY (`IDHotelEmployees`) REFERENCES `hotelinformation` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COMMENT='in this table we have all access and referenfe for all employees for all hotels';
+
+-- Dump dei dati della tabella hoteldatabase.employees: ~4 rows (circa)
+/*!40000 ALTER TABLE `employees` DISABLE KEYS */;
+INSERT INTO `employees` (`ID`, `Name`, `Surname`, `User`, `UserPassword`, `TypeAccess`, `IDHotelEmployees`) VALUES
+	(1, 'Jose', 'Carwelo', 'RECEPTION_1', 'REPECTION1', 'RECEPTION', 1),
+	(2, 'Luisa', 'Cossaro', 'RECEPTION_2', 'RECEPTION2', 'RECEPTION', 2),
+	(3, 'Giorge', 'Fox', 'MANAGER_1', 'MANAGER1', 'MANAGER', 1),
+	(4, 'Francesco', 'Benevento', 'MANAGER_2', 'MANAGER2', 'MANAGER', 2);
+/*!40000 ALTER TABLE `employees` ENABLE KEYS */;
+
+-- Dump della struttura di tabella hoteldatabase.hotelinformation
+CREATE TABLE IF NOT EXISTS `hotelinformation` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `HotelName` char(100) NOT NULL DEFAULT '0',
+  `HotelStreet` char(100) NOT NULL DEFAULT '0',
+  `HotelCAP` smallint(5) unsigned zerofill NOT NULL,
+  `HotelPIVA` bigint(20) NOT NULL,
+  `HotelSDI` char(20) NOT NULL,
+  `IDCountryHotel` int(10) unsigned NOT NULL DEFAULT 1,
+  PRIMARY KEY (`ID`),
+  KEY `IDCountryHotel` (`IDCountryHotel`),
+  CONSTRAINT `FK1_IDCountryHotel` FOREIGN KEY (`IDCountryHotel`) REFERENCES `countryhotel` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='In this table, we have all legal information of our hotels\r\n';
+
+-- Dump dei dati della tabella hoteldatabase.hotelinformation: ~2 rows (circa)
+/*!40000 ALTER TABLE `hotelinformation` DISABLE KEYS */;
+INSERT INTO `hotelinformation` (`ID`, `HotelName`, `HotelStreet`, `HotelCAP`, `HotelPIVA`, `HotelSDI`, `IDCountryHotel`) VALUES
+	(1, 'NH Collection Milano President', 'Largo Augusto, 10', 20122, 154370047, 'C3KFHL1', 4),
+	(2, 'Hotel Vilòn - Small Luxury Hotels of the World', 'Via Dell\' Arancio, 69', 00186, 986245546, 'W7GHFR3', 9);
+/*!40000 ALTER TABLE `hotelinformation` ENABLE KEYS */;
+
+-- Dump della struttura di tabella hoteldatabase.moneyvalue
+CREATE TABLE IF NOT EXISTS `moneyvalue` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Money` char(20) NOT NULL,
+  `Simbol` char(5) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1 COMMENT='In this table we have all money value and simbols';
+
+-- Dump dei dati della tabella hoteldatabase.moneyvalue: ~3 rows (circa)
+/*!40000 ALTER TABLE `moneyvalue` DISABLE KEYS */;
+INSERT INTO `moneyvalue` (`ID`, `Money`, `Simbol`) VALUES
+	(1, 'EURO', '€'),
+	(2, 'USD', '$'),
+	(3, 'POUND', '£');
+/*!40000 ALTER TABLE `moneyvalue` ENABLE KEYS */;
+
+-- Dump della struttura di tabella hoteldatabase.prenotation
+CREATE TABLE IF NOT EXISTS `prenotation` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `IDBedroom` int(10) unsigned NOT NULL,
+  `IDClient` int(10) unsigned NOT NULL,
+  `Payment` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `AdvancePayment` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `IDMoneyValue` int(10) unsigned NOT NULL,
+  `DateStart` date NOT NULL,
+  `DateEnd` date NOT NULL,
+  `ServiceList` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin DEFAULT NULL CHECK (json_valid(`ServiceList`)),
+  PRIMARY KEY (`ID`),
+  KEY `FK1_Bedroom` (`IDBedroom`) USING BTREE,
+  KEY `FK2_Client` (`IDClient`) USING BTREE,
+  KEY `IDMoneyValue` (`IDMoneyValue`),
+  CONSTRAINT `FK1_Bedroom` FOREIGN KEY (`IdBedroom`) REFERENCES `bedroom` (`ID`),
+  CONSTRAINT `FK2_Client` FOREIGN KEY (`IdClient`) REFERENCES `client` (`ID`),
+  CONSTRAINT `FK3_IDMoneyValue` FOREIGN KEY (`IDMoneyValue`) REFERENCES `moneyvalue` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COMMENT='This tables include prenotation from client to bedrooms';
+
+-- Dump dei dati della tabella hoteldatabase.prenotation: ~2 rows (circa)
+/*!40000 ALTER TABLE `prenotation` DISABLE KEYS */;
+INSERT INTO `prenotation` (`ID`, `IDBedroom`, `IDClient`, `Payment`, `AdvancePayment`, `IDMoneyValue`, `DateStart`, `DateEnd`, `ServiceList`) VALUES
+	(1, 1, 1, 240.00, 0.00, 1, '2020-11-01', '2020-11-05', NULL),
+	(2, 2, 2, 400.00, 150.00, 1, '2020-11-15', '2020-11-25', NULL);
+/*!40000 ALTER TABLE `prenotation` ENABLE KEYS */;
+
+-- Dump della struttura di tabella hoteldatabase.servicehotel
+CREATE TABLE IF NOT EXISTS `servicehotel` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `TypeServiceHotel` char(20) DEFAULT '_',
+  `Description` char(100) NOT NULL DEFAULT '_',
+  `Cost` decimal(10,2) NOT NULL DEFAULT 0.00,
+  `IDHotelService` int(10) unsigned NOT NULL COMMENT 'Quale hotel dispone di questo servizio, ogni Hotel si sceglie il suo, se a pagamento oppure no',
+  PRIMARY KEY (`ID`),
+  KEY `IDHotelService` (`IDHotelService`),
+  CONSTRAINT `FK1_IDHotelService` FOREIGN KEY (`IDHotelService`) REFERENCES `hotelinformation` (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=latin1 COMMENT='This list contains all service available in hotel (in each single hotel)';
+
+-- Dump dei dati della tabella hoteldatabase.servicehotel: ~30 rows (circa)
+/*!40000 ALTER TABLE `servicehotel` DISABLE KEYS */;
+INSERT INTO `servicehotel` (`ID`, `TypeServiceHotel`, `Description`, `Cost`, `IDHotelService`) VALUES
+	(17, 'LANGUAGES', 'Arabo', 0.00, 1),
+	(18, 'LANGUAGES', 'Inglese', 0.00, 1),
+	(19, 'LANGUAGES', 'Italiano', 0.00, 1),
+	(20, 'LANGUAGES', 'Tedesco', 0.00, 2),
+	(21, 'LANGUAGES', 'Francese', 0.00, 1),
+	(22, 'SECURITY', 'Fire extinguishers', 0.00, 1),
+	(23, 'SECURITY', 'Savebox', 0.00, 1),
+	(24, 'BUSINESS', 'Fax and photocopies', 0.00, 1),
+	(25, 'BUSINESS', 'Meeting room', 0.00, 1),
+	(26, 'ENTERTAINMENT', 'Baby dance', 0.00, 2),
+	(27, 'SNACK_DRINK', 'Delivery food to the room', 0.00, 1),
+	(28, 'HOSPITALITY', 'Delivery service', 0.00, 1),
+	(29, 'HOSPITALITY', 'Luggage storage', 0.00, 1),
+	(30, 'HOSPITALITY', 'Currency Exchange', 0.00, 1),
+	(31, 'WELLNESS', 'Massages', 0.00, 2),
+	(32, 'WELLNESS', 'Sauna', 0.00, 1),
+	(33, 'WELLNESS', 'Gym room', 0.00, 2),
+	(34, 'CLEANING_ROOM', '_', 0.00, 1),
+	(35, 'PARKING', 'Parking near Hotel', 1.00, 1),
+	(36, 'INTERNET', '_', 0.00, 1),
+	(37, 'MEDIA_TV', '_', 0.00, 1),
+	(38, 'BAR_RESTAURANT', '_', 0.00, 1),
+	(39, 'ACCESSIBILITY', '_', 0.00, 1),
+	(40, 'KITCHEN', '_', 0.00, 1),
+	(41, 'FREE_SPACE', '_', 0.00, 1),
+	(42, 'ROOM', '_', 0.00, 1),
+	(43, 'GENERAL_SERVICE', '_', 0.00, 1),
+	(44, 'BATHROOM', '_', 0.00, 2),
+	(45, 'PARKING', 'Provate parking', 5.00, 1),
+	(46, 'PARKING', 'Private parking with service', 40.00, 2);
+/*!40000 ALTER TABLE `servicehotel` ENABLE KEYS */;
+
+-- Dump della struttura di tabella hoteldatabase.servicerestaurant
+CREATE TABLE IF NOT EXISTS `servicerestaurant` (
+  `ID` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `Scope` char(20) DEFAULT NULL,
+  `Description` char(100) NOT NULL,
+  `Cost` decimal(10,2) NOT NULL DEFAULT 0.00,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=30 DEFAULT CHARSET=latin1 COMMENT='This table include all service available in hotel (all Hotels have same menù)';
+
+-- Dump dei dati della tabella hoteldatabase.servicerestaurant: ~17 rows (circa)
+/*!40000 ALTER TABLE `servicerestaurant` DISABLE KEYS */;
+INSERT INTO `servicerestaurant` (`ID`, `Scope`, `Description`, `Cost`) VALUES
+	(13, 'ANTIPASTI', 'Musetto di maiale fondente, scampie pomodori', 42.00),
+	(14, 'ANTIPASTI', 'Gamberi viola appena scottati, pistacchi e barbabietole', 48.00),
+	(15, 'ANTIPASTI', 'Carne cruda di Vicciola con tartufo', 52.00),
+	(16, 'PRIMI', 'Spaghetti ai ricci di mare', 40.00),
+	(17, 'PRIMI', 'Tagliatelle di patate, prezzemolo, cozze e limone', 42.00),
+	(18, 'RISOTTI', 'Risotto allo zafferano e midollo alla piastra', 38.00),
+	(19, 'RISOTTI', 'Risotto mantecato allo zenzero e cacao', 46.00),
+	(20, 'PESCI', 'Scampi arrostiti, crema di datteri, puntarelli e porro', 56.00),
+	(21, 'PESCI', 'Rombo in crosta di cacao, patata bianca e piselli', 98.00),
+	(22, 'PESCI', 'Astice blu cotto al vapore, carciofi e birra di farro', 64.00),
+	(23, 'CARNI', 'Piccione in crosta di caffè, patata farcita al mascarpone e vaniglia', 46.00),
+	(24, 'CARNI', 'Cubo di vitello impanato alla milanese, petalo di pomodoro e zucchine', 42.00),
+	(25, 'CARNI', 'Animelle di vitello gratinate alle mandorle', 46.00),
+	(26, 'DESSERT', 'Dessert al cioccolato, croccante di fagioli germogliati,  gelato alle lenticchie e vaniglia', 34.00),
+	(27, 'DESSERT', 'Selezione di frutta ghiacciata', 36.00),
+	(28, 'DESSERT', 'Crema bruciata al tè bergamotto, mandarini fondenti e noci di pecan', 36.00),
+	(29, 'DESSERT', 'Albicocca alla vaniglia, biscotto allo zucchero muscovado, cioccolato biondo e frangipane', 36.00);
+/*!40000 ALTER TABLE `servicerestaurant` ENABLE KEYS */;
+
+/*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
+/*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

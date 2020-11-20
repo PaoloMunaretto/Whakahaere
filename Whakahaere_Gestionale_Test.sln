@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.30621.155
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whakahaere_Gestionale_Test", "Whakahaere_Gestionale_Test\Whakahaere_Gestionale_Test.csproj", "{9FF88FE8-311D-40FA-8D7E-93D66DB47041}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Resources", "Resources\Resources.csproj", "{6AE2B541-FEC6-450D-9139-5E1ECE205E27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibrary", "Resources\MyLibrary.csproj", "{6AE2B541-FEC6-450D-9139-5E1ECE205E27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

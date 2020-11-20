@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Whakahaere));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
@@ -116,7 +116,7 @@
             this.btInformations});
             this.toolStripButtons.Location = new System.Drawing.Point(0, 0);
             this.toolStripButtons.Name = "toolStripButtons";
-            this.toolStripButtons.Size = new System.Drawing.Size(1250, 37);
+            this.toolStripButtons.Size = new System.Drawing.Size(1681, 37);
             this.toolStripButtons.TabIndex = 4;
             this.toolStripButtons.Text = "toolStrip1";
             // 
@@ -255,10 +255,10 @@
             this.toolStripStatus.ImageScalingSize = new System.Drawing.Size(30, 30);
             this.toolStripStatus.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblTime});
-            this.toolStripStatus.Location = new System.Drawing.Point(0, 696);
+            this.toolStripStatus.Location = new System.Drawing.Point(0, 382);
             this.toolStripStatus.Name = "toolStripStatus";
             this.toolStripStatus.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.toolStripStatus.Size = new System.Drawing.Size(1250, 26);
+            this.toolStripStatus.Size = new System.Drawing.Size(1681, 26);
             this.toolStripStatus.TabIndex = 5;
             this.toolStripStatus.Text = "toolStrip1";
             // 
@@ -280,20 +280,20 @@
             // 
             this.dataGridRoom.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
             this.dataGridRoom.ColumnHeadersHeight = 25;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridRoom.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridRoom.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridRoom.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridRoom.Location = new System.Drawing.Point(0, 137);
             this.dataGridRoom.Name = "dataGridRoom";
             this.dataGridRoom.RowHeadersWidth = 50;
             this.dataGridRoom.RowTemplate.Height = 24;
-            this.dataGridRoom.Size = new System.Drawing.Size(1250, 559);
+            this.dataGridRoom.Size = new System.Drawing.Size(1681, 245);
             this.dataGridRoom.TabIndex = 6;
             this.dataGridRoom.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridRoom_CellDoubleClick);
             this.dataGridRoom.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridRoom_CellMouseClick);
@@ -312,7 +312,7 @@
             this.panelLogIn.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelLogIn.Location = new System.Drawing.Point(0, 37);
             this.panelLogIn.Name = "panelLogIn";
-            this.panelLogIn.Size = new System.Drawing.Size(1250, 100);
+            this.panelLogIn.Size = new System.Drawing.Size(1681, 100);
             this.panelLogIn.TabIndex = 7;
             // 
             // label3
@@ -343,7 +343,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(44)))), ((int)(((byte)(51)))));
-            this.ClientSize = new System.Drawing.Size(1250, 722);
+            this.ClientSize = new System.Drawing.Size(1681, 408);
             this.Controls.Add(this.dataGridRoom);
             this.Controls.Add(this.panelLogIn);
             this.Controls.Add(this.toolStripStatus);
@@ -352,6 +352,7 @@
             this.Name = "Whakahaere";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wakahaere";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Whakahaere_FormClosing);
             this.toolStripButtons.ResumeLayout(false);
             this.toolStripButtons.PerformLayout();

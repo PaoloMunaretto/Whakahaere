@@ -55,32 +55,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CLASSI\DataGridMetods.cs" />
-    <Compile Include="CLASSI\MenuStripExtender.cs" />
-    <Compile Include="CLASSI\ValueConstant.cs" />
-    <Compile Include="FORM\CREATE NEW ELEMENT\FormClient.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FORM\CREATE NEW ELEMENT\FormClient.Designer.cs">
-      <DependentUpon>FormClient.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FORM\CREATE NEW ELEMENT\FormBedroom.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FORM\CREATE NEW ELEMENT\FormBedroom.Designer.cs">
-      <DependentUpon>FormBedroom.cs</DependentUpon>
-    </Compile>
+    <Compile Include="CLASS_WINDOWS_FORM\DataGridMetods.cs" />
+    <Compile Include="CLASS_WINDOWS_FORM\MenuStripExtender.cs" />
     <Compile Include="FORM\PRENOTATION\CreatePrenotation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FORM\PRENOTATION\CreatePrenotation.Designer.cs">
       <DependentUpon>CreatePrenotation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="FORM\PAYMENT\FormPayment.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FORM\PAYMENT\FormPayment.Designer.cs">
-      <DependentUpon>FormPayment.cs</DependentUpon>
     </Compile>
     <Compile Include="FORM\START\Whakahaere.cs">
       <SubType>Form</SubType>
@@ -95,14 +76,8 @@
     <Compile Include="OBJECT\Prenotation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FORM\CREATE NEW ELEMENT\FormBedroom.resx">
-      <DependentUpon>FormBedroom.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FORM\PRENOTATION\CreatePrenotation.resx">
       <DependentUpon>CreatePrenotation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="FORM\PAYMENT\FormPayment.resx">
-      <DependentUpon>FormPayment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FORM\START\Whakahaere.resx">
       <DependentUpon>Whakahaere.cs</DependentUpon>
@@ -127,19 +102,19 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="_INFORMATIONS\Invoice.docx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Resources\Resources.csproj">
+    <ProjectReference Include="..\Resources\MyLibrary.csproj">
       <Project>{6ae2b541-fec6-450d-9139-5e1ece205e27}</Project>
-      <Name>Resources</Name>
+      <Name>MyLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="TXT_Informations\Readme.txt" />
+    <Content Include="_INFORMATIONS\hoteldatabase.txt" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

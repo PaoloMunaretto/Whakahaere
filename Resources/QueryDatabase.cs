@@ -8,15 +8,18 @@ using MySql.Data.MySqlClient;
 
 namespace Resources
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class QueryDatabase
     {
         /// <summary>
-        /// Restituiamo tutte le tabelle presenti nel database 
+        /// Return all tables in database
         /// </summary>
         /// <param name="stringConnection"></param>
         /// <param name="query"></param>
         /// <returns></returns>
-        public string ReadAllTablesMariaDB(string stringConnection, string query)
+        public string ReadAllTablesDB(string stringConnection, string query)
         {
             string row = "";
             MySqlConnection connection = new MySqlConnection(stringConnection);
@@ -38,15 +41,13 @@ namespace Resources
             return row;
         }
 
-
-
         /// <summary>
-        /// Restituiamo tutti gli elementi (items) presenti nella tabella
+        /// Return Datatable with all items in database.table
         /// </summary>
         /// <param name="stringConnection"></param>
         /// <param name="query"></param>
         /// <returns></returns>
-        public DataTable GetValues(string stringConnection, string query)
+        public DataTable GetTableItems(string stringConnection, string query)
         {
             DataTable dTable = new DataTable();
             try
@@ -57,18 +58,7 @@ namespace Resources
                 sqlConnection.Open();
 
                 MySqlDataAdapter sqlAdapter = new MySqlDataAdapter(sqlCommand);
-                // this will query your database and return the result to your datatable
                 sqlAdapter.Fill(dTable);
-
-                {/*
-                Console.WriteLine("***************************************");
-                foreach (DataColumn col in dTable.Columns)
-                {
-                    Console.WriteLine("Column:{0} Type:{1}", col.ColumnName, col.DataType);
-                }
-                Console.WriteLine("***************************************");
-                */
-                }
 
                 sqlConnection.Close();
                 sqlAdapter.Dispose();
@@ -81,9 +71,5 @@ namespace Resources
                 return null;
             }
         }
-    
-    
-       
-        
     }
 }

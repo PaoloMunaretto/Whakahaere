@@ -94,7 +94,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyLibrary.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="EnumValue.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -112,7 +113,6 @@
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
-    <None Include="Resources\Hotel.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\clock.png" />
@@ -130,25 +130,16 @@
     <None Include="Resources\calendar.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\bedroom.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\BedroomICO.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\save.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Database.ico" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\DatabaseICO.ico" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\invoice.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\invoiceICO.ico" />
+    <None Include="Resources\Hotel.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DatabaseICO.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

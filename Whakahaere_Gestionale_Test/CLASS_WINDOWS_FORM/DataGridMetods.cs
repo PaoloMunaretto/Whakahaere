@@ -9,18 +9,24 @@ namespace Whakahaere
 {
     public class DataGridMetods
     {
+        /// <summary>
+        /// Set columns dataGridView
+        /// </summary>
+        /// <param name="dataGrid"></param>
         public void SetTypeDataGrid(DataGridView dataGrid)
-        {
-            //Settiamo quali colonne vogliamo vedere nella tabella
+        {            
             dataGrid.AutoGenerateColumns = false;
             dataGrid.AllowUserToAddRows = false;
             dataGrid.AllowUserToResizeColumns = false;
+            dataGrid.AllowUserToResizeRows = false;
             dataGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dataGrid.RowHeadersVisible = false;
             dataGrid.ReadOnly = true;
-            dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+
+
+            //dataGrid.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             dataGrid.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.BottomCenter;
-            dataGrid.ColumnHeadersHeight = 30;
+            dataGrid.ColumnHeadersHeight = 50;
         }
     }
 }

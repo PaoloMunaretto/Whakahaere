@@ -8,13 +8,17 @@ using System.Drawing;
 
 namespace Override
 {
-    //  toolStripmenu.Renderer = new ToolStripProfessionalRenderer(new MyColorTable());
+    //  Implement class on your object:
+    //  using Override; 
+    //  toolStripName.Renderer = new ToolStripProfessionalRenderer(new MyColorTable());
+
+
     public class MyColorTable : ProfessionalColorTable
     {
         public override Color ToolStripDropDownBackground
         {
             get
-            { //Bordi esterni
+            { 
                 return Color.Gray;
             }
         }
@@ -22,7 +26,7 @@ namespace Override
         public override Color ImageMarginGradientBegin
         {
             get
-            {//Bordo sinistro
+            { 
                 return Color.Gray;
             }
         }
@@ -47,7 +51,6 @@ namespace Override
         {
             get
             {
-                //Bordi del menu
                 return Color.Gray;
             }
         }
@@ -56,7 +59,6 @@ namespace Override
         {
             get
             {
-                //Bordi del testo selezionato
                 return Color.Gray;
             }
         }
@@ -65,8 +67,7 @@ namespace Override
         {
             get
             {
-                //Colore sfondo testo selezionato da item
-                return Color.Blue; 
+                return Color.Blue;
             }
         }
 
@@ -91,7 +92,7 @@ namespace Override
         {
             get
             {
-                return Color.Blue; //selezione, colore sovrastante
+                return Color.Transparent; //selezione, colore sovrastante
 
             }
         }
@@ -100,7 +101,7 @@ namespace Override
         {
             get
             {
-                return Color.Black; //selezione, colore sottostante
+                return Color.Transparent;// Color.Black; //selezione, colore sottostante
             }
         }
 
@@ -119,6 +120,7 @@ namespace Override
                 return Color.Blue;
             }
         }
+
     }
 
 }
