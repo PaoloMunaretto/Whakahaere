@@ -21,6 +21,11 @@ namespace Main
     /// </summary>
     public partial class MainWindow
     {
+        /// <summary>
+        /// Costruttore della pagina.
+        /// NB: I componenti visivi XAML del file MainWindow.xaml sono accessibili
+        /// solo dopo la chiamata di InitializeComponent()
+        /// </summary>
         public MainWindow()
         {
             InitializeComponent();
