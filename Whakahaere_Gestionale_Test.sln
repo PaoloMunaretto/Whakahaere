@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Whakahaere_Gestionale_Test"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyLibrary", "Resources\MyLibrary.csproj", "{6AE2B541-FEC6-450D-9139-5E1ECE205E27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Main", "Main\Main.csproj", "{0BF951BE-B301-466A-8A90-20035AB33CD0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{6AE2B541-FEC6-450D-9139-5E1ECE205E27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AE2B541-FEC6-450D-9139-5E1ECE205E27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AE2B541-FEC6-450D-9139-5E1ECE205E27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BF951BE-B301-466A-8A90-20035AB33CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BF951BE-B301-466A-8A90-20035AB33CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BF951BE-B301-466A-8A90-20035AB33CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BF951BE-B301-466A-8A90-20035AB33CD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
